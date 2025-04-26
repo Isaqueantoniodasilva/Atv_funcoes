@@ -1,0 +1,30 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button } from 'react-native';
+
+export default function App() {
+  const [nome, setNome] = useState('');
+  const [mensagem, setMensagem] = useState('');
+
+  function atualizar() {
+    setMensagem(`Olá, ${nome}!`);
+  }
+
+  function limpar() {
+    setNome('');
+    setMensagem('');
+  }
+
+  return (
+    <View style={{ padding: 20, marginTop: 100 }}>
+      <TextInput
+        placeholder="Digite seu nome"
+        value={nome}
+        onChangeText={setNome}
+        style={{ borderBottomWidth: 1, marginBottom: 10 }}
+      />
+      <Button title="Atualizar" onPress={atualizar} />
+      <Button title="Limpar" onPress={limpar} />
+      <Text style={{ marginTop: 20, fontSize: 20 }}>{mensagem}</Text>
+    </View>
+  );
+}
